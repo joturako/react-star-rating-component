@@ -27,6 +27,7 @@ npm install react-star-rating-component --save
     onStarClick={Function(nextValue, prevValue, name)} /* on icon click handler */
     renderStarIcon={Function(nextValue, prevValue, name)} /* it should return string or react component */
     renderStarIconHalf={Function(nextValue, prevValue, name)} /* it should return string or react component */
+    renderStarIconEmpty={Function(nextValue, prevValue, name)} /* it should return string or react component */
     starColor={String} /* color of selected icons, default `#ffb400` */
     emptyStarColor={String} /* color of non-selected icons, default `#333` */
     editing={Boolean} /* is component available for editing, default `true` */
@@ -35,7 +36,7 @@ npm install react-star-rating-component --save
 
 ## Examples
 
-### Editable 
+### Editable
 
 ```javascript
 import React from 'react';
@@ -60,8 +61,8 @@ class App extends React.Component {
         return (                
             <div>
                 <h2>Rating from state: {rating}</h2>
-                <StarRatingComponent 
-                    name="rate1" 
+                <StarRatingComponent
+                    name="rate1"
                     starCount={10}
                     value={rating}
                     onStarClick={this.onStarClick.bind(this)}
@@ -72,7 +73,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-    <App />, 
+    <App />,
     document.getElementById('app')
 );
 ```
@@ -90,8 +91,8 @@ class App extends React.Component {
         return (                
             <div>
                 <h2>Rating from state: {rating}</h2>
-                <StarRatingComponent 
-                    name="rate2" 
+                <StarRatingComponent
+                    name="rate2"
                     editing={false}
                     renderStarIcon={() => <span></span>}
                     starCount={10}
@@ -103,7 +104,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-    <App />, 
+    <App />,
     document.getElementById('app')
 );
 ```

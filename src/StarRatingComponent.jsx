@@ -10,7 +10,8 @@ class StarRatingComponent extends Component {
     starColor: PropTypes.string,
     onStarClick: PropTypes.func,
     renderStarIcon: PropTypes.func,
-    renderStarIconHalf: PropTypes.func
+    renderStarIconHalf: PropTypes.func,
+    renderStarIconEmpty: PropTypes.func
   };
 
   static defaultProps = {
@@ -109,7 +110,7 @@ class StarRatingComponent extends Component {
   }
 
   renderIcon(index, value, name) {
-    const { renderStarIcon, renderStarIconHalf } = this.props;
+    const { renderStarIcon, renderStarIconHalf, renderStarIconEmpty } = this.props;
 
     if (
       typeof renderStarIconHalf === 'function' &&
@@ -117,6 +118,13 @@ class StarRatingComponent extends Component {
       value % 1 !== 0
     ) {
       return renderStarIconHalf(index, value, name);
+    }
+
+    if (
+      typeof renderStarIcon === 'function' &&
+      value < index
+    ) {
+      return renderStarIconEmpty(index, value, name);
     }
 
     if (typeof renderStarIcon === 'function') {

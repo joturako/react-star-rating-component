@@ -191,11 +191,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function renderIcon(index, value, name) {
 	      var _props3 = this.props,
 	          renderStarIcon = _props3.renderStarIcon,
-	          renderStarIconHalf = _props3.renderStarIconHalf;
+	          renderStarIconHalf = _props3.renderStarIconHalf,
+	          renderStarIconEmpty = _props3.renderStarIconEmpty;
 
 
 	      if (typeof renderStarIconHalf === 'function' && Math.ceil(value) === index && value % 1 !== 0) {
 	        return renderStarIconHalf(index, value, name);
+	      }
+
+	      if (typeof renderStarIcon === 'function' && value < index) {
+	        return renderStarIconEmpty(index, value, name);
 	      }
 
 	      if (typeof renderStarIcon === 'function') {
@@ -238,7 +243,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  starColor: _react.PropTypes.string,
 	  onStarClick: _react.PropTypes.func,
 	  renderStarIcon: _react.PropTypes.func,
-	  renderStarIconHalf: _react.PropTypes.func
+	  renderStarIconHalf: _react.PropTypes.func,
+	  renderStarIconEmpty: _react.PropTypes.func
 	};
 	StarRatingComponent.defaultProps = {
 	  starCount: 5,
