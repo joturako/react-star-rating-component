@@ -64,7 +64,7 @@ class StarRatingComponent extends Component {
     const starStyles = (i, value) => ({
       float: 'right',
       cursor: editing ? 'pointer' : 'default',
-      color: value >= i ? starColor : emptyStarColor
+      color: value + 1 >= i ? starColor : emptyStarColor
     });
     const radioStyles = {
       display: 'none',
